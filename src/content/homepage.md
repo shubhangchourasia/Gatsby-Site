@@ -1,5 +1,8 @@
 ---
-heading: Salesforce -- Simplified!
+heading: |-
+  Salesforce
+
+  Simplified!
 slogan: Helping Transform Business Growth
 topImage: /img/introduction.png
 salesforceImage: /img/salesforce.png

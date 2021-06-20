@@ -1,6 +1,8 @@
 ---
 heading: Salesforce -- Simplified!
 slogan: Helping Transform Business Growth
+topImage: /img/introduction.png
+salesforceImage: /img/salesforce.png
 subheading: Explore our value-add to the Salesforce Community!
 mission: Listen, iterate and deliver value by compounding.
 coreValues: >-

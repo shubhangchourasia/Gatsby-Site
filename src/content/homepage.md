@@ -24,7 +24,7 @@ coreValues: >-
   KISSS - Keep It Simple, Straight-forward, and Secure.
 serviceImg1: /img/i-t.png
 service1: |-
-  Implementation & Training
+  **Implementation & Training**
 
   * Business Development
   * System Design & Implementation
@@ -33,7 +33,7 @@ service1: |-
   * Training
 serviceImg2: /img/so.png
 service2: |-
-  System Optimisation
+  **System Optimisation**
 
   * System Design
   * Consultation
@@ -41,17 +41,16 @@ service2: |-
   * Data Cleanup
 serviceImg3: /img/ms.png
 service3: |-
-  Managed Services
+  **Managed Services**
 
   * Salesforce Administration
-  * Business Development
   * Health Check
   * Release Readiness
   * Change Management
   * User Training & Governance
 serviceImg4: /img/lm.png
 service4: |-
-  Lightning Migration
+  **Lightning Migration**
 
   * Impact Assessment
   * Deployment Plan

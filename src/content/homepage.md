@@ -1,11 +1,12 @@
 ---
+logo: ../images/logo.png
 heading: |-
   Salesforce
 
   Simplified!
 slogan: Helping Transform Business Growth
-topImage: /img/indexbg.png
-salesforceImage: /img/salesforce.png
+topImage: ../images/indexbg.png
+salesforceImage: ../images/salesforce.png
 subheading: Explore our value-add to the Salesforce Community!
 mission: Listen, iterate and deliver value by compounding.
 coreValues: >-
@@ -21,8 +22,8 @@ coreValues: >-
   We believe incremental and persistent value addition will yield great products & services.
 
 
-  KISSS - Keep It Simple, Straight-forward, and Secure.
-serviceImg1: /img/it.png
+  **KISSS - Keep It Simple, Straight-forward, and Secure.**
+serviceImg1: ../images/it.png
 service1: |-
   **Implementation & Training**
 
@@ -31,7 +32,7 @@ service1: |-
   * Salesforce Governance
   * Solution Documentation
   * Training
-serviceImg2: /img/so.png
+serviceImg2: ../images/so.png
 service2: |-
   **System Optimisation**
 
@@ -39,7 +40,7 @@ service2: |-
   * Consultation
   * System Health Check
   * Data Cleanup
-serviceImg3: /img/ms.png
+serviceImg3: ../images/ms.png
 service3: |-
   **Managed Services**
 
@@ -48,7 +49,7 @@ service3: |-
   * Release Readiness
   * Change Management
   * User Training & Governance
-serviceImg4: /img/lm.png
+serviceImg4: ../images/lm.png
 service4: |-
   **Lightning Migration**
 

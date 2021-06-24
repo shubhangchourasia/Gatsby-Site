@@ -1,6 +1,6 @@
 ---
 navImg: ../images/logo.png
-logo: ../images/lm.png
+logo: ../images/logo.png
 heading: |-
   Salesforce
 

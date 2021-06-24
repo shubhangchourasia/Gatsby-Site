@@ -1,5 +1,5 @@
 ---
-logo: ../images/logo.png
+navImg: ../images/salesforce.png
 heading: |-
   Salesforce
 
@@ -41,6 +41,8 @@ service2: |-
   * System Health Check
   * Data Cleanup
 serviceImg3: ../images/ms.png
+serviceImg4: ../images/lm.png
+logo: ../images/logo.png
 service3: |-
   **Managed Services**
 
@@ -49,7 +51,6 @@ service3: |-
   * Release Readiness
   * Change Management
   * User Training & Governance
-serviceImg4: ../images/lm.png
 service4: |-
   **Lightning Migration**
 

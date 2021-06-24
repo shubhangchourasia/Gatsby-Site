@@ -1,5 +1,5 @@
 ---
-navImg: ../images/salesforce.png
+navImg: ../images/logo.png
 heading: |-
   Salesforce
 

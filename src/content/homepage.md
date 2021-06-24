@@ -4,7 +4,7 @@ heading: |-
 
   Simplified!
 slogan: Helping Transform Business Growth
-topImage: /img/indexbg.jpg
+topImage: /img/indexbg.png
 salesforceImage: /img/salesforce.png
 subheading: Explore our value-add to the Salesforce Community!
 mission: Listen, iterate and deliver value by compounding.
@@ -22,7 +22,7 @@ coreValues: >-
 
 
   KISSS - Keep It Simple, Straight-forward, and Secure.
-serviceImg1: /img/i-t.png
+serviceImg1: /img/it.png
 service1: |-
   **Implementation & Training**
 

@@ -8,6 +8,7 @@ slogan: Helping Transform Business Growth
 topImage: ../images/indexbg.png
 salesforceImage: ../images/salesfimg.png
 subheading: Explore our value-add to the Salesforce Community!
+aboutImg: ../images/aboutimg.png
 mission: Listen, iterate and deliver value by compounding.
 coreValues: >-
   We believe all returns in life -- knowledge, wealth, and relationships -- come
@@ -23,6 +24,7 @@ coreValues: >-
 
 
   **KISSS - Keep It Simple, Straight-forward, and Secure.**
+serviceImg: ../images/serviceimg.png
 serviceImg1: ../images/it.png
 service1: |-
   **Implementation & Training**

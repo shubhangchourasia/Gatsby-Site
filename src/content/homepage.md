@@ -1,4 +1,5 @@
 ---
+title: Homepage
 logo: ../images/logo.png
 heading: |-
   Salesforce

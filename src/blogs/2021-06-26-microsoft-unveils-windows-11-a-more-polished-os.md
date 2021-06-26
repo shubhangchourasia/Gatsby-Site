@@ -1,0 +1,12 @@
+---
+title: Microsoft unveils Windows 11, a more polished OS
+date: 2021-06-27T00:50:28.095Z
+thumbnail: ../images/blog2.jpg
+readTime: 4
+---
+A messy (but [surprisingly stable](https://www.engadget.com/windows-11-leak-hands-on-windows-10-macos-224819963.html)) [leak](https://www.engadget.com/windows-11-leak-10x-microsoft-195643253.html) probably wasn't the way Microsoft wanted to introduce the world to Windows 11, but that didn't stop the company from launching its new OS today with a ton of fanfare. After all, a new version of Windows doesn't come around very often, right? So here's what's up with Windows 11: Like we saw in the leaked build, it's clearly evolving everything we saw in Windows 10. But there's an extra sheen of polish that's nice to see after spending six years with the last version. The new OS will be a free upgrade for Windows 10 users and start rolling out "this holiday".\
+A messy (but [surprisingly stable](https://www.engadget.com/windows-11-leak-hands-on-windows-10-macos-224819963.html)) [leak](https://www.engadget.com/windows-11-leak-10x-microsoft-195643253.html) probably wasn't the way Microsoft wanted to introduce the world to Windows 11, but that didn't stop the company from launching its new OS today with a ton of fanfare. After all, a new version of Windows doesn't come around very often, right? So here's what's up with Windows 11: Like we saw in the leaked build, it's clearly evolving everything we saw in Windows 10. But there's an extra sheen of polish that's nice to see after spending six years with the last version. The new OS will be a free upgrade for Windows 10 users and start rolling out "this holiday".
+
+And yes, the centered task bar we saw last week is still, well, front and center. For many users, I'd imagine it'd be a somewhat disconcerting change to break a tradition that started with Windows 95. But after playing with the beta build for over a week now, it's a change I've come to appreciate. (You can also push the taskbar back to the left side of the screen if it really bugs you.) From everything we've seen so far, it still looks like you can't choose to have labels show up on the task bar either, so it's all icons moving forward.
+
+Personally, I'm more interested in seeing how Windows users feel about the revamped Start menu. The last time Microsoft tried to change that up with the full-screen Start page in Windows 8, it sparked a massive user revolt. Windows 11's version isn't as dramatic a change, but it'll still require some learning.

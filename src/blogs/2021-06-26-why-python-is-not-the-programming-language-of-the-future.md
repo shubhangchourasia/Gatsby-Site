@@ -1,7 +1,7 @@
 ---
 title: Why Python is not the programming language of the future
 date: 2021-06-26T15:52:18.017Z
-thumbnail: ../images/blog4.jpg
+thumbnail: ../images/blog5.jpeg
 readTime: 15
 ---
 It took the programming community a couple of decades to appreciate Python. But since the early 2010’s, it has been booming — and eventually surpassing C, C#, Java and JavaScript in popularity.

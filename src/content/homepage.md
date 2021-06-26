@@ -59,4 +59,5 @@ service4: |-
   * Deployment Plan
   * Training & Documentation
   * Salesforce Governance
+contactImg: ../images/contactimg.png
 ---

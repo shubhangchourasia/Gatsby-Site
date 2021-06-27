@@ -1,5 +1,17 @@
 ---
 blogImg: ../images/blogimg.png
+title: Welcome to DBT Blogs
+logo: ../images/logo.png
+heading: |-
+  Salesforce
+
+  Simplified!
+slogan: Helping Transform Business Growth
+topImage: ../images/indexbg.png
+salesforceImage: ../images/salesfimg.png
+subheading: Explore our value-add to the Salesforce Community!
+aboutImg: ../images/aboutimg.png
+mission: Listen, iterate and deliver value by compounding.
 coreValues: >-
   We believe all returns in life -- knowledge, wealth, and relationships -- come
   from the compounding, so playing the long game is the secret of value
@@ -13,23 +25,9 @@ coreValues: >-
   We believe incremental and persistent value addition will yield great products & services.
 
 
-  **KISSS - Keep It Simple, Straight-forward, and Secure.**
-heading: |-
-  Salesforce
-
-  Simplified!
-subheading: Explore our value-add to the Salesforce Community!
-serviceImg1: ../images/it.png
-contactImg: ../images/contactimg.png
-serviceImg2: ../images/so.png
-serviceImg3: ../images/ms.png
-topImage: ../images/indexbg.png
-serviceImg4: ../images/lm.png
-logo: ../images/logo.png
-mission: Listen, iterate and deliver value by compounding.
+  KISSS - Keep It Simple, Straight-forward, and Secure.
 serviceImg: ../images/serviceimg.png
-aboutImg: ../images/aboutimg.png
-title: Welcome to DBT Blogs
+serviceImg1: ../images/it.png
 service1: |-
   **Implementation & Training**
 
@@ -38,7 +36,7 @@ service1: |-
   * Salesforce Governance
   * Solution Documentation
   * Training
-salesforceImage: ../images/salesfimg.png
+serviceImg2: ../images/so.png
 service2: |-
   **System Optimization**
 
@@ -46,6 +44,7 @@ service2: |-
   * Consultation
   * System Health Check
   * Data Cleanup
+serviceImg3: ../images/ms.png
 service3: |-
   **Managed Service**
 
@@ -54,7 +53,7 @@ service3: |-
   * Release Readiness
   * Change Management
   * User Training & Governance
-slogan: Helping Transform Business Growth
+serviceImg4: ../images/lm.png
 service4: |-
   **Lightning Migration**
 
@@ -62,5 +61,6 @@ service4: |-
   * Deployment Plan
   * Training & Documentation
   * Salesforce Governance
+contactImg: ../images/contactimg.png
 ---
 The future of communication starts here

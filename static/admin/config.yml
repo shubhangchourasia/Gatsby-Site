@@ -26,7 +26,7 @@ collections:
   - name: "homepage"
     label: "Homepage"
     folder: "src/content"
-    create: true
+    # create: true
     slug: "homepage"
     delete: false
     fields:
@@ -53,9 +53,9 @@ collections:
   - name: "blogpage"
     label: "Blog Page"
     folder: "src/blogcontent"
-    create: true
+    # create: true
     slug: "blogpage"
-    # delete: false
+    delete: false
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Blog Image", name: "blogImg", widget: "image" }

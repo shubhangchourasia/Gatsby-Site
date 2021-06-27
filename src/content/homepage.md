@@ -9,7 +9,10 @@ topImage: ../images/indexbg.png
 salesforceImage: ../images/salesfimg.png
 subheading: Explore our value-add to the Salesforce Community!
 aboutImg: ../images/aboutimg.png
-mission: Listen, iterate and deliver value by compounding.
+mission: |-
+  Listen, iterate and deliver 
+
+  value by compounding.
 coreValues: >-
   We believe all returns in life -- knowledge, wealth, and relationships -- come
   from the compounding, so playing the long game is the secret of value

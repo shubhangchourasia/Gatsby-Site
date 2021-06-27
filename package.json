@@ -17,16 +17,23 @@
   "dependencies": {
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
+    "aos": "^2.3.4",
+    "bulma": "^0.9.2",
     "gatsby": "^3.6.2",
+    "gatsby-plugin-image": "^1.8.0",
     "gatsby-plugin-manifest": "^3.7.1",
     "gatsby-plugin-mdx": "^2.7.1",
     "gatsby-plugin-netlify-cms": "^5.7.1",
     "gatsby-plugin-react-helmet": "^4.7.1",
-    "gatsby-source-filesystem": "^3.7.1",
+    "gatsby-plugin-sharp": "^3.8.0",
+    "gatsby-source-filesystem": "^3.8.0",
     "gatsby-transformer-remark": "^4.4.1",
+    "gatsby-transformer-sharp": "^3.8.0",
     "netlify-cms-app": "^2.15.19",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "react-helmet": "^6.1.0"
+    "react-helmet": "^6.1.0",
+    "react-icons": "^4.2.0",
+    "react-markdown": "^6.0.2"
   }
 }

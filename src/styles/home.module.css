@@ -1,0 +1,93 @@
+.head {
+  line-height: 2.5rem;
+  position: absolute;
+  top: 150px;
+  right: 70px;
+  z-index: 1;
+  text-align: center;
+}
+
+.heading {
+  font-size: 50px;
+  line-height: 1rem;
+}
+.subHeading {
+  font-size: 30px;
+}
+
+.boxFlex {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.cols {
+  max-width: 80%;
+  margin: 0 auto !important;
+}
+@media screen and (max-width: 1024px) {
+  .heading {
+    font-size: 30px;
+  }
+  .subHeading {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .head {
+    top: 100px;
+    right: 10px;
+  }
+  .heading {
+    font-size: 25px;
+  }
+  .subHeading {
+    font-size: 18px;
+  }
+  .boxFlex {
+    flex-direction: column;
+  }
+  .serve {
+    margin: 0 auto;
+  }
+}
+@media screen and (max-width: 426px) {
+  .head {
+    top: 100px;
+    right: 10px;
+  }
+  .heading {
+    font-size: 18px;
+    line-height: 10px !important;
+  }
+  .subHeading {
+    font-size: 10px;
+    margin-top: -10px !important;
+  }
+  .cols {
+    max-width: 95%;
+  }
+}
+.salesImg {
+  width: 70%;
+  text-align: center;
+}
+
+.coreStyle {
+  font-size: 15px;
+  margin: 10px 20%;
+}
+@media screen and (max-width: 426px) {
+  .coreStyle {
+    margin: 10px 5%;
+  }
+}
+
+.boxMargin {
+  margin-bottom: 1.5rem;
+}
+.serviceImgs {
+  margin: 0 auto;
+  text-align: center;
+}

@@ -1,0 +1,105 @@
+.heading {
+  font-size: 3.2rem;
+  line-height: 1.5rem;
+  color: #00cdac;
+}
+
+.slogan {
+  font-size: 1.5rem;
+  color: #345389;
+}
+.topImage,
+.salesfImg {
+  width: 75%;
+}
+.subheading {
+  font-size: 2.2rem;
+}
+.about {
+  color: #fa7f6f;
+}
+.mission {
+  font-size: 2.2rem;
+  line-height: 1rem;
+}
+.coreStyle {
+  font-size: 15px;
+  margin: 10px 20%;
+}
+.cols {
+  max-width: 100%;
+  margin: 0 auto !important;
+}
+.boxMargin {
+  margin-bottom: 1.5rem;
+}
+.icon {
+  font-size: 30px;
+  color: #2a2a2a;
+  padding: 20px;
+}
+.blogContainer {
+  grid-gap: 30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-content: space-between;
+}
+.main {
+  margin: 0 auto;
+  max-width: 1120px;
+  padding: 0 4vw;
+}
+.blogImg {
+  height: 200px;
+}
+.blogTitle {
+  height: 3em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.blogText {
+  height: 4.5em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.blogTopImg {
+  width: 70%;
+}
+.mainBlog {
+  max-width: 70%;
+  margin: 0 auto;
+}
+.mainBlogImg {
+  max-width: 80%;
+  margin: 0 auto;
+  max-height: 700px;
+}
+@media screen and (max-width: 768px) {
+  .cols {
+    max-width: 60%;
+  }
+  .blogContainer {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media screen and (max-width: 500px) {
+  .heading {
+    font-size: 2.5rem;
+  }
+  .slogan {
+    font-size: 1rem;
+  }
+  .subheading,
+  .mission {
+    font-size: 1.5rem;
+  }
+  .coreStyle {
+    margin: 10px 5%;
+  }
+  .cols {
+    max-width: 95%;
+  }
+  .blogContainer {
+    grid-template-columns: 1fr;
+  }
+}

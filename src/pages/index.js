@@ -1,184 +1,384 @@
-import * as React from "react";
-
-// styles
-const pageStyles = {
-  color: "#232129",
-  padding: 96,
-  fontFamily: "-apple-system, Roboto, sans-serif, serif",
-};
-const headingStyles = {
-  marginTop: 0,
-  marginBottom: 64,
-  maxWidth: 320,
-};
-const headingAccentStyles = {
-  color: "#663399",
-};
-const paragraphStyles = {
-  marginBottom: 48,
-};
-const codeStyles = {
-  color: "#8A6534",
-  padding: 4,
-  backgroundColor: "#FFF4DB",
-  fontSize: "1.25rem",
-  borderRadius: 4,
-};
-const listStyles = {
-  marginBottom: 96,
-  paddingLeft: 0,
-};
-const listItemStyles = {
-  fontWeight: 300,
-  fontSize: 24,
-  maxWidth: 560,
-  marginBottom: 30,
-};
-
-const linkStyle = {
-  color: "#8954A8",
-  fontWeight: "bold",
-  fontSize: 16,
-  verticalAlign: "5%",
-};
-
-const docLinkStyle = {
-  ...linkStyle,
-  listStyleType: "none",
-  marginBottom: 24,
-};
-
-const descriptionStyle = {
-  color: "#232129",
-  fontSize: 14,
-  marginTop: 10,
-  marginBottom: 0,
-  lineHeight: 1.25,
-};
-
-const docLink = {
-  text: "Documentation",
-  url: "https://www.gatsbyjs.com/docs/",
-  color: "#8954A8",
-};
-
-const badgeStyle = {
-  color: "#fff",
-  backgroundColor: "#088413",
-  border: "1px solid #088413",
-  fontSize: 11,
-  fontWeight: "bold",
-  letterSpacing: 1,
-  borderRadius: 4,
-  padding: "4px 6px",
-  display: "inline-block",
-  position: "relative",
-  top: -2,
-  marginLeft: 10,
-  lineHeight: 1,
-};
-
-// data
-const links = [
-  {
-    text: "Tutorial",
-    url: "https://www.gatsbyjs.com/docs/tutorial/",
-    description:
-      "A great place to get started if you're new to web development. Designed to guide you through setting up your first Gatsby site.",
-    color: "#E95800",
-  },
-  {
-    text: "How to Guides",
-    url: "https://www.gatsbyjs.com/docs/how-to/",
-    description:
-      "Practical step-by-step guides to help you achieve a specific goal. Most useful when you're trying to get something done.",
-    color: "#1099A8",
-  },
-  {
-    text: "Reference Guides",
-    url: "https://www.gatsbyjs.com/docs/reference/",
-    description:
-      "Nitty-gritty technical descriptions of how Gatsby works. Most useful when you need detailed information about Gatsby's APIs.",
-    color: "#BC027F",
-  },
-  {
-    text: "Conceptual Guides",
-    url: "https://www.gatsbyjs.com/docs/conceptual/",
-    description:
-      "Big-picture explanations of higher-level Gatsby concepts. Most useful for building understanding of a particular topic.",
-    color: "#0D96F2",
-  },
-  {
-    text: "Plugin Library",
-    url: "https://www.gatsbyjs.com/plugins",
-    description:
-      "Add functionality and customize your Gatsby site or app with thousands of plugins built by our amazing developer community.",
-    color: "#8EB814",
-  },
-  {
-    text: "Build and Host",
-    url: "https://www.gatsbyjs.com/cloud",
-    badge: true,
-    description:
-      "Now you’re ready to show the world! Give your Gatsby site superpowers: Build and host on Gatsby Cloud. Get started for free!",
-    color: "#663399",
-  },
-];
-
-// markup
-const IndexPage = () => {
+import { graphql, Link } from "gatsby";
+import React, { useEffect } from "react";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import Layout from "../components/Layout";
+import "bulma/css/bulma.css";
+import * as styles from "../styles/homepage.module.css";
+import { FaUserAlt } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { Helmet } from "react-helmet";
+const ReactMarkdown = require("react-markdown");
+export default function Index({ data }) {
+  const pageData = data.markdownRemark.frontmatter;
+  const mar = {
+    marginTop: "50px",
+    marginBottom: "100px",
+  };
+  useEffect(() => {
+    AOS.init({
+      duration: 1500,
+      once: true,
+    });
+  }, []);
+  //   window.addEventListener('storage', () => {
+  // console.log('session storage variable value changed');
+  // });
   return (
-    <main style={pageStyles}>
-      <title>Home Page</title>
-      <h1 style={headingStyles}>
-        Hello World! Congratulations
-        <br />
-        <span style={headingAccentStyles}>— you just made a Gatsby site! </span>
-        <span role="img" aria-label="Party popper emojis">
-          🎉🎉🎉
-        </span>
-      </h1>
-      <p style={paragraphStyles}>
-        Edit <code style={codeStyles}>src/pages/index.js</code> to see this page
-        update in real-time.{" "}
-        <span role="img" aria-label="Sunglasses smiley emoji">
-          😎
-        </span>
-      </p>
-      <ul style={listStyles}>
-        <li style={docLinkStyle}>
-          <a
-            style={linkStyle}
-            href={`${docLink.url}?utm_source=starter&utm_medium=start-page&utm_campaign=minimal-starter`}
+    <Layout>
+      <Helmet>
+        <title>DigitalBiz Tech</title>
+      </Helmet>
+      <section id="#">
+        <div className="columns">
+          <div
+            className="column mt-6 pt-6 is-two-fifths ml-6 "
+            data-aos="fade-up"
           >
-            {docLink.text}
-          </a>
-        </li>
-        {links.map((link) => (
-          <li key={link.url} style={{ ...listItemStyles, color: link.color }}>
-            <span>
-              <a
-                style={linkStyle}
-                href={`${link.url}?utm_source=starter&utm_medium=start-page&utm_campaign=minimal-starter`}
+            <ReactMarkdown
+              children={pageData.heading}
+              className={"has-text-weight-semibold mt-6 " + styles.heading}
+            />
+            <ReactMarkdown
+              children={pageData.slogan}
+              className={"has-text-weight-semibold mt-6 " + styles.slogan}
+            />
+            <Link to="/#contact">
+              <div className="buttons mt-2">
+                <button className="button is-info">Contact Us</button>
+              </div>
+            </Link>
+          </div>
+          <div
+            className="column is-flex is-justify-content-center"
+            data-aos="zoom-in"
+          >
+            <figure className={"image " + styles.topImage}>
+              <GatsbyImage
+                image={getImage(
+                  data.markdownRemark.frontmatter.topImage.childImageSharp
+                )}
+                alt="Top Image"
+              />
+            </figure>
+          </div>
+        </div>
+        <div className="columns is-vcentered">
+          <div
+            className="column is-flex is-justify-content-center"
+            data-aos="zoom-in"
+          >
+            <figure className={"image " + styles.salesfImg}>
+              <GatsbyImage
+                image={getImage(
+                  data.markdownRemark.frontmatter.salesforceImage
+                    .childImageSharp
+                )}
+                alt="Salesforce Image"
+              />
+            </figure>
+          </div>
+          <div className="column" data-aos="fade-up">
+            <ReactMarkdown
+              children={pageData.subheading}
+              className={
+                "has-text-weight-semibold has-text-grey-dark has-text-centered " +
+                styles.subheading
+              }
+            />
+          </div>
+        </div>
+      </section>
+      <section id="about" style={mar}>
+        <div
+          className={
+            "has-text-weight-semibold has-text-centered is-size-3 is-size-5-mobile " +
+            styles.about
+          }
+          data-aos="fade-up"
+        >
+          About DBT
+        </div>
+        <div className="columns mt-2 is-vcentered">
+          <div className="column" data-aos="fade-up">
+            <div className="has-text-weight-semibold has-text-centered is-size-4 is-size-5-mobile has-text-info mb-4">
+              Our Mission
+            </div>
+            <ReactMarkdown
+              children={pageData.mission}
+              className={
+                "has-text-weight-semibold has-text-grey-dark has-text-centered " +
+                styles.mission
+              }
+            />
+          </div>
+          <div
+            className="column is-flex is-justify-content-center "
+            data-aos="zoom-in"
+          >
+            <figure className={"image "}>
+              <GatsbyImage
+                image={getImage(
+                  data.markdownRemark.frontmatter.aboutImg.childImageSharp
+                )}
+                alt="About Image"
+              />
+            </figure>
+          </div>
+        </div>
+        <div data-aos="fade-up">
+          <ReactMarkdown
+            children={pageData.coreValues}
+            className={
+              "has-text-grey has-text-centered has-text-weight-medium " +
+              styles.coreStyle
+            }
+          />
+        </div>
+      </section>
+      <section id="services" style={mar}>
+        <div
+          className={
+            "has-text-weight-semibold has-text-centered is-size-3 is-size-5-mobile " +
+            styles.about
+          }
+          data-aos="fade-up"
+        >
+          Our Services
+        </div>
+        <div className="columns is-vcentered mt-4">
+          <div className="column is-two-fifths" data-aos="zoom-in">
+            <figure className={"image "}>
+              <GatsbyImage
+                image={getImage(
+                  data.markdownRemark.frontmatter.serviceImg.childImageSharp
+                )}
+                alt="Service Image"
+              />
+            </figure>
+          </div>
+          <div className="column mt-3">
+            <div className={"columns " + styles.cols}>
+              <div
+                className={"column box ml-2 mr-2 " + styles.boxMargin}
+                data-aos="fade-up"
               >
-                {link.text}
-              </a>
-              {link.badge && (
-                <span style={badgeStyle} aria-label="New Badge">
-                  NEW!
-                </span>
-              )}
-              <p style={descriptionStyle}>{link.description}</p>
-            </span>
-          </li>
-        ))}
-      </ul>
-      <img
-        alt="Gatsby G Logo"
-        src="data:image/svg+xml,%3Csvg width='24' height='24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 2a10 10 0 110 20 10 10 0 010-20zm0 2c-3.73 0-6.86 2.55-7.75 6L14 19.75c3.45-.89 6-4.02 6-7.75h-5.25v1.5h3.45a6.37 6.37 0 01-3.89 4.44L6.06 9.69C7 7.31 9.3 5.63 12 5.63c2.13 0 4 1.04 5.18 2.65l1.23-1.06A7.959 7.959 0 0012 4zm-8 8a8 8 0 008 8c.04 0 .09 0-8-8z' fill='%23639'/%3E%3C/svg%3E"
-      />
-    </main>
-  );
-};
+                <div className="is-flex is-justify-content-center">
+                  <figure className={"image is-64x64"}>
+                    <GatsbyImage
+                      image={getImage(
+                        data.markdownRemark.frontmatter.serviceImg1
+                          .childImageSharp
+                      )}
+                      alt="Service Image 1"
+                    />
+                  </figure>
+                </div>
+                <ReactMarkdown
+                  children={pageData.service1}
+                  className={"has-text-grey has-text-weight-medium "}
+                />
+              </div>
+              <div
+                className={"column box ml-2 mr-2 " + styles.boxMargin}
+                data-aos="fade-up"
+              >
+                <div className="is-flex is-justify-content-center">
+                  <figure className={"image is-64x64"}>
+                    <GatsbyImage
+                      image={getImage(
+                        data.markdownRemark.frontmatter.serviceImg3
+                          .childImageSharp
+                      )}
+                      alt="Service Image 3"
+                    />
+                  </figure>
+                </div>
+                <ReactMarkdown
+                  children={pageData.service3}
+                  className={"has-text-grey has-text-weight-medium "}
+                />
+              </div>
+            </div>
+            <div className={"columns " + styles.cols}>
+              <div
+                className={"column box ml-2 mr-2 " + styles.boxMargin}
+                data-aos="fade-up"
+              >
+                <div className="is-flex is-justify-content-center">
+                  <figure className={"image is-64x64"}>
+                    <GatsbyImage
+                      image={getImage(
+                        data.markdownRemark.frontmatter.serviceImg2
+                          .childImageSharp
+                      )}
+                      alt="Service Image 2"
+                    />
+                  </figure>
+                </div>
+                <ReactMarkdown
+                  children={pageData.service2}
+                  className={"has-text-grey has-text-weight-medium "}
+                />
+              </div>
+              <div
+                className={"column box ml-2 mr-2 " + styles.boxMargin}
+                data-aos="fade-up"
+              >
+                <div className="is-flex is-justify-content-center">
+                  <figure className={"image is-64x64"}>
+                    <GatsbyImage
+                      image={getImage(
+                        data.markdownRemark.frontmatter.serviceImg4
+                          .childImageSharp
+                      )}
+                      alt="Service Image 4"
+                    />
+                  </figure>
+                </div>
+                <ReactMarkdown
+                  children={pageData.service4}
+                  className={"has-text-grey has-text-weight-medium "}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="contact" style={mar}>
+        <div
+          className={
+            "has-text-weight-semibold has-text-centered is-size-3 is-size-5-mobile " +
+            styles.about
+          }
+          data-aos="fade-up"
+        >
+          Contact Us
+        </div>
+        <div className="columns mt-4">
+          <div className="column ml-6 mr-6 is-two-fifths" data-aos="fade-up">
+            <form>
+              <div className="field">
+                <div className="control has-icons-left">
+                  <input
+                    className="input"
+                    type="text"
+                    placeholder="Enter Name"
+                    required
+                  />
+                  <span className="icon is-left">
+                    <FaUserAlt />
+                  </span>
+                </div>
+              </div>
+              <div className="field">
+                <div className="control has-icons-left">
+                  <input
+                    className="input"
+                    type="email"
+                    placeholder="Enter Email"
+                    required
+                  />
+                  <span className="icon is-left">
+                    <MdEmail />
+                  </span>
+                </div>
+              </div>
+              <div className="field">
+                <div className="control">
+                  <textarea
+                    className="textarea"
+                    placeholder="Enter Message"
+                    required
+                  ></textarea>
+                </div>
+              </div>
+              <div className="buttons is-centered">
+                <button className="button is-info is-outlined is-fullwidth">
+                  Submit
+                </button>
+              </div>
+            </form>
+          </div>
 
-export default IndexPage;
+          <div className="column" data-aos="zoom-in">
+            <div className="is-flex is-justify-content-center">
+              <figure className={"image"}>
+                <GatsbyImage
+                  image={getImage(
+                    data.markdownRemark.frontmatter.contactImg.childImageSharp
+                  )}
+                  alt="ContactImg"
+                />
+              </figure>
+            </div>
+          </div>
+        </div>
+      </section>
+    </Layout>
+  );
+}
+
+export const query = graphql`
+  query Homepage {
+    markdownRemark(fields: { slug: { eq: "/homepage/" } }) {
+      frontmatter {
+        salesforceImage {
+          childImageSharp {
+            gatsbyImageData
+          }
+        }
+        serviceImg1 {
+          childImageSharp {
+            gatsbyImageData
+          }
+        }
+        serviceImg2 {
+          childImageSharp {
+            gatsbyImageData
+          }
+        }
+        serviceImg3 {
+          childImageSharp {
+            gatsbyImageData
+          }
+        }
+        serviceImg4 {
+          childImageSharp {
+            gatsbyImageData
+          }
+        }
+        topImage {
+          childImageSharp {
+            gatsbyImageData
+          }
+        }
+        aboutImg {
+          childImageSharp {
+            gatsbyImageData
+          }
+        }
+        serviceImg {
+          childImageSharp {
+            gatsbyImageData
+          }
+        }
+        contactImg {
+          childImageSharp {
+            gatsbyImageData
+          }
+        }
+        heading
+        coreValues
+        mission
+        slogan
+        subheading
+        service4
+        service3
+        service2
+        service1
+      }
+    }
+  }
+`;

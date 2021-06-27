@@ -1,0 +1,62 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: src/images
+public_folder: ../images
+
+collections:
+  - name: "blog" # Used in routes, e.g., /admin/collections/blog
+    label: "Blog" # Used in the UI
+    folder: "src/blogs" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    fields: # The fields for each document, usually in front matter
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Featured Image", name: "thumbnail", widget: "image" }
+      - { label: "Body", name: "body", widget: "markdown" }
+      - {
+          label: "Read Time in Minutes",
+          name: "readTime",
+          widget: "number",
+          value_type: "int",
+        }
+
+  - name: "homepage"
+    label: "Homepage"
+    folder: "src/content"
+    create: true
+    slug: "homepage"
+    delete: false
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Heading", name: "heading", widget: "markdown" }
+      - { label: "Slogan", name: "slogan", widget: "markdown" }
+      - { label: "Top Image", name: "topImage", widget: "image" }
+      - { label: "Salesforce Image", name: "salesforceImage", widget: "image" }
+      - { label: "Sub-heading", name: "subheading", widget: "markdown" }
+      - { label: "About Image", name: "aboutImg", widget: "image" }
+      - { label: "About - Mission", name: "mission", widget: "markdown" }
+      - { label: "About - Core Values", name: "coreValues", widget: "markdown" }
+      - { label: "Service Image", name: "serviceImg", widget: "image" }
+      - { label: "Service Image 1", name: "serviceImg1", widget: "image" }
+      - { label: "Service 1", name: "service1", widget: "markdown" }
+      - { label: "Service Image 2", name: "serviceImg2", widget: "image" }
+      - { label: "Service 2", name: "service2", widget: "markdown" }
+      - { label: "Service Image 3", name: "serviceImg3", widget: "image" }
+      - { label: "Service 3", name: "service3", widget: "markdown" }
+      - { label: "Service Image 4", name: "serviceImg4", widget: "image" }
+      - { label: "Service 4", name: "service4", widget: "markdown" }
+      - { label: "Contact Image", name: "contactImg", widget: "image" }
+
+  - name: "blogpage"
+    label: "Blog Page"
+    folder: "src/blogcontent"
+    create: true
+    slug: "blogpage"
+    # delete: false
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Blog Image", name: "blogImg", widget: "image" }
+      - { label: "Sub Heading", name: "body", widget: "markdown" }

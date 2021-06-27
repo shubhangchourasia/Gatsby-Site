@@ -1,54 +1,38 @@
-import * as React from "react"
-import { Link } from "gatsby"
+import React, { useEffect } from "react";
+import { Link } from "gatsby";
+import "bulma/css/bulma.css";
+import Layout from "../components/Layout";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { Helmet } from "react-helmet";
 
-// styles
-const pageStyles = {
-  color: "#232129",
-  padding: "96px",
-  fontFamily: "-apple-system, Roboto, sans-serif, serif",
-}
-const headingStyles = {
-  marginTop: 0,
-  marginBottom: 64,
-  maxWidth: 320,
-}
-
-const paragraphStyles = {
-  marginBottom: 48,
-}
-const codeStyles = {
-  color: "#8A6534",
-  padding: 4,
-  backgroundColor: "#FFF4DB",
-  fontSize: "1.25rem",
-  borderRadius: 4,
-}
-
-// markup
 const NotFoundPage = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 1500,
+      once: true,
+    });
+  }, []);
+  const img = {
+    maxWidth: "70%",
+    margin: "0 auto",
+  };
   return (
-    <main style={pageStyles}>
-      <title>Not found</title>
-      <h1 style={headingStyles}>Page not found</h1>
-      <p style={paragraphStyles}>
-        Sorry{" "}
-        <span role="img" aria-label="Pensive emoji">
-          😔
-        </span>{" "}
-        we couldn’t find what you were looking for.
-        <br />
-        {process.env.NODE_ENV === "development" ? (
-          <>
-            <br />
-            Try creating a page in <code style={codeStyles}>src/pages/</code>.
-            <br />
-          </>
-        ) : null}
-        <br />
-        <Link to="/">Go home</Link>.
-      </p>
-    </main>
-  )
-}
+    <Layout>
+      <Helmet>
+        <title>404 Page Not Found</title>
+      </Helmet>
+      <div style={img} className="has-text-centered">
+        <figure class="image" data-aos="zoom-in">
+          <img src="/img/404Img.png" alt="404Img" />
+        </figure>
 
-export default NotFoundPage
+        <Link to="/" data-aos="fade-up" data-aos-delay="200">
+          <button className="button is-info">Go to Home</button>
+        </Link>
+      </div>
+    </Layout>
+  );
+};
+
+export default NotFoundPage;

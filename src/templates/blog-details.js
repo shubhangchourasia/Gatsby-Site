@@ -14,7 +14,6 @@ const BlogDetails = ({ data }) => {
     marginTop: "2px",
     marginRight: "5px",
   };
-
   return (
     <Layout>
       <Helmet>
@@ -34,10 +33,18 @@ const BlogDetails = ({ data }) => {
       </Link>
 
       <div className={"is-flex is-justify-content-center " + mainBlogImg}>
-        <GatsbyImage
+        {blog.frontmatter.thumbnail != null ? (
+          <GatsbyImage
+            image={getImage(blog.frontmatter.thumbnail.childImageSharp)}
+            alt="Blog Img"
+          />
+        ) : (
+          " "
+        )}
+        {/* <GatsbyImage
           image={getImage(blog.frontmatter.thumbnail.childImageSharp)}
           alt="Blog Img"
-        />
+        /> */}
       </div>
       <div className={"mt-6 " + mainBlog}>
         <div className="is-size-3 is-size-5-mobile has-text-weight-bold">

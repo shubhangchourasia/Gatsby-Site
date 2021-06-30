@@ -29,56 +29,38 @@ coreValues: >-
   KISSS - Keep It Simple, Straight-forward, and Secure.
 serviceImg: ../images/serviceimg.png
 serviceImg1: ../images/it.png
-service1: "**Implementation & Training**\r
+service1: |-
+  Implementation & Training
 
-  \r
-
-  \  * Business Development\r
-
-  \  * System Design & Implementation\r
-
-  \  * Salesforce Governance\r
-
-  \  * Solution Documentation\r
-
-  \  * Training"
+  * Business Development
+  * System Design & Implementation
+  * Salesforce Governance
+  * Solution Documentation
+  * Training
 serviceImg2: ../images/so.png
-service2: "**System Optimization**\r
+service2: |-
+  System Optimization
 
-  \r
-
-  \  * System Design\r
-
-  \  * Consultation\r
-
-  \  * System Health Check\r
-
-  \  * Data Cleanup"
+  * System Design
+  * Consultation
+  * System Health Check
+  * Data Cleanup
 serviceImg3: ../images/ms.png
-service3: "**Managed Service**\r
+service3: |-
+  Managed Service
 
-  \r
-
-  \  * Salesforce Administration\r
-
-  \  * Health Check\r
-
-  \  * Release Readiness\r
-
-  \  * Change Management\r
-
-  \  * User Training & Governance"
+  * Salesforce Administration
+  * Health Check
+  * Release Readiness
+  * Change Management
+  * User Training & Governance
 serviceImg4: ../images/lm.png
-service4: "**Lightning Migration**\r
+service4: |-
+  Lightning Migration
 
-  \r
-
-  \  * Impact Assessment\r
-
-  \  * Deployment Plan\r
-
-  \  * Training & Documentation\r
-
-  \  * Salesforce Governance"
+  * Impact Assessment
+  * Deployment Plan
+  * Training & Documentation
+  * Salesforce Governance
 contactImg: ../images/contactimg.png
 ---

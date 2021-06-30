@@ -33,10 +33,16 @@
 .boxMargin {
   margin-bottom: 1.5rem;
 }
-.icon {
+.iconDark,
+.iconLight {
   font-size: 30px;
-  color: #2a2a2a;
   padding: 20px;
+}
+.iconLight {
+  color: #2a2a2a;
+}
+.iconDark {
+  color: #f5f5f5;
 }
 .blogContainer {
   grid-gap: 30px;
@@ -74,6 +80,46 @@
   margin: 0 auto;
   max-height: 700px;
 }
+.txtBorder {
+  border: 1px solid #363636;
+}
+.txtBorder:hover {
+  border: 1px solid #363636;
+}
+.themeImg1 {
+  display: block;
+  margin-top: 18px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+.themeImg2 {
+  display: none;
+  cursor: pointer;
+}
+.darkModeText {
+  color: #f5f5f5 !important;
+}
+
+.bodyHeight {
+  min-height: 100vh;
+}
+.navDarkMode:hover {
+  background-color: #7a7a7a !important;
+}
+
+@media screen and (max-width: 1023px) {
+  .themeImg1 {
+    display: none;
+  }
+  .themeImg2 {
+    width: 100%;
+    display: flex !important;
+    justify-content: flex-end;
+    margin-top: 18px;
+    margin-right: 10px;
+    display: block;
+  }
+}
 @media screen and (max-width: 768px) {
   .cols {
     max-width: 60%;
@@ -102,4 +148,5 @@
   .blogContainer {
     grid-template-columns: 1fr;
   }
+  
 }

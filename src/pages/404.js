@@ -14,7 +14,7 @@ const NotFoundPage = () => {
     });
   }, []);
   const img = {
-    maxWidth: "70%",
+    maxWidth: "85%",
     margin: "0 auto",
   };
   return (

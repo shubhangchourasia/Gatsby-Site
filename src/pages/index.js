@@ -1,5 +1,5 @@
 import { graphql, Link } from "gatsby";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import Layout from "../components/Layout";
 import "bulma/css/bulma.css";
@@ -16,24 +16,33 @@ export default function Index({ data }) {
     marginTop: "50px",
     marginBottom: "100px",
   };
+
+  const theme =
+    typeof window !== "undefined"
+      ? JSON.parse(localStorage.getItem("darktheme"))
+      : null;
+  const [darkTheme, setDarkTheme] = useState();
+  useEffect(() => {
+    setDarkTheme(theme);
+  }, [theme]);
+
   useEffect(() => {
     AOS.init({
       duration: 1500,
       once: true,
     });
   }, []);
-  //   window.addEventListener('storage', () => {
-  // console.log('session storage variable value changed');
-  // });
+
   return (
     <Layout>
       <Helmet>
         <title>DigitalBiz Tech</title>
+         <meta name="description" content="DBT Application" />
       </Helmet>
       <section id="#">
         <div className="columns">
           <div
-            className="column mt-6 pt-6 is-two-fifths ml-6 "
+            className="column mt-6 pt-6 is-two-fifth ml-6 "
             data-aos="fade-up"
           >
             <ReactMarkdown
@@ -83,7 +92,8 @@ export default function Index({ data }) {
             <ReactMarkdown
               children={pageData.subheading}
               className={
-                "has-text-weight-semibold has-text-grey-dark has-text-centered " +
+                (darkTheme ? "has-text-white" : "") +
+                " has-text-weight-semibold has-text-centered " +
                 styles.subheading
               }
             />
@@ -108,7 +118,8 @@ export default function Index({ data }) {
             <ReactMarkdown
               children={pageData.mission}
               className={
-                "has-text-weight-semibold has-text-grey-dark has-text-centered " +
+                (darkTheme ? "has-text-white " : "") +
+                "has-text-weight-semibold has-text-centered " +
                 styles.mission
               }
             />
@@ -131,7 +142,8 @@ export default function Index({ data }) {
           <ReactMarkdown
             children={pageData.coreValues}
             className={
-              "has-text-grey has-text-centered has-text-weight-medium " +
+              (darkTheme ? "has-text-light " : "has-text-grey") +
+              " has-text-centered has-text-weight-medium " +
               styles.coreStyle
             }
           />
@@ -161,7 +173,11 @@ export default function Index({ data }) {
           <div className="column mt-3">
             <div className={"columns " + styles.cols}>
               <div
-                className={"column box ml-2 mr-2 " + styles.boxMargin}
+                className={
+                  (darkTheme ? "has-background-black" : "") +
+                  " column box ml-2 mr-2 " +
+                  styles.boxMargin
+                }
                 data-aos="fade-up"
               >
                 <div className="is-flex is-justify-content-center">
@@ -177,11 +193,18 @@ export default function Index({ data }) {
                 </div>
                 <ReactMarkdown
                   children={pageData.service1}
-                  className={"has-text-grey has-text-weight-medium "}
+                  className={
+                    (darkTheme ? "has-text-light" : "has-text-grey") +
+                    " has-text-weight-medium "
+                  }
                 />
               </div>
               <div
-                className={"column box ml-2 mr-2 " + styles.boxMargin}
+                className={
+                  (darkTheme ? "has-background-black" : "") +
+                  " column box ml-2 mr-2 " +
+                  styles.boxMargin
+                }
                 data-aos="fade-up"
               >
                 <div className="is-flex is-justify-content-center">
@@ -197,13 +220,20 @@ export default function Index({ data }) {
                 </div>
                 <ReactMarkdown
                   children={pageData.service3}
-                  className={"has-text-grey has-text-weight-medium "}
+                  className={
+                    (darkTheme ? "has-text-light" : "has-text-grey") +
+                    " has-text-weight-medium "
+                  }
                 />
               </div>
             </div>
             <div className={"columns " + styles.cols}>
               <div
-                className={"column box ml-2 mr-2 " + styles.boxMargin}
+                className={
+                  (darkTheme ? "has-background-black" : "") +
+                  " column box ml-2 mr-2 " +
+                  styles.boxMargin
+                }
                 data-aos="fade-up"
               >
                 <div className="is-flex is-justify-content-center">
@@ -219,11 +249,18 @@ export default function Index({ data }) {
                 </div>
                 <ReactMarkdown
                   children={pageData.service2}
-                  className={"has-text-grey has-text-weight-medium "}
+                  className={
+                    (darkTheme ? "has-text-light" : "has-text-grey") +
+                    " has-text-weight-medium "
+                  }
                 />
               </div>
               <div
-                className={"column box ml-2 mr-2 " + styles.boxMargin}
+                className={
+                  (darkTheme ? "has-background-black" : "") +
+                  " column box ml-2 mr-2 " +
+                  styles.boxMargin
+                }
                 data-aos="fade-up"
               >
                 <div className="is-flex is-justify-content-center">
@@ -239,7 +276,10 @@ export default function Index({ data }) {
                 </div>
                 <ReactMarkdown
                   children={pageData.service4}
-                  className={"has-text-grey has-text-weight-medium "}
+                  className={
+                    (darkTheme ? "has-text-light" : "has-text-grey") +
+                    " has-text-weight-medium "
+                  }
                 />
               </div>
             </div>
@@ -259,13 +299,28 @@ export default function Index({ data }) {
         <div className="columns mt-4">
           <div className="column ml-6 mr-6 is-two-fifths" data-aos="fade-up">
             <form>
-              <div className="field">
+              <div className="field ">
+                <label
+                  className={
+                    "label has-text-weight-light " +
+                    (darkTheme ? "has-text-light" : "has-text-grey")
+                  }
+                  htmlFor="name"
+                >
+                  Name
+                </label>
                 <div className="control has-icons-left">
                   <input
-                    className="input"
+                    className={
+                      (darkTheme
+                        ? "has-background-black has-text-light"
+                        : "has-text-grey") +
+                      " input " +
+                      styles.txtBorder
+                    }
                     type="text"
-                    placeholder="Enter Name"
                     required
+                    id="name"
                   />
                   <span className="icon is-left">
                     <FaUserAlt />
@@ -273,12 +328,28 @@ export default function Index({ data }) {
                 </div>
               </div>
               <div className="field">
+                <label
+                  className={
+                    "label has-text-weight-light " +
+                    (darkTheme ? "has-text-light" : "has-text-grey")
+                  }
+                  htmlFor="email"
+                >
+                  Email
+                </label>
+
                 <div className="control has-icons-left">
                   <input
-                    className="input"
+                    className={
+                      (darkTheme
+                        ? "has-background-black has-text-light"
+                        : "has-text-grey") +
+                      " input " +
+                      styles.txtBorder
+                    }
                     type="email"
-                    placeholder="Enter Email"
                     required
+                    id="email"
                   />
                   <span className="icon is-left">
                     <MdEmail />
@@ -286,11 +357,26 @@ export default function Index({ data }) {
                 </div>
               </div>
               <div className="field">
+                <label
+                  className={
+                    "label has-text-weight-light " +
+                    (darkTheme ? "has-text-light" : "has-text-grey")
+                  }
+                  htmlFor="message"
+                >
+                  Message
+                </label>
                 <div className="control">
                   <textarea
-                    className="textarea"
-                    placeholder="Enter Message"
+                    className={
+                      (darkTheme
+                        ? "has-text-light has-background-black"
+                        : "has-text-grey") +
+                      " textarea " +
+                      styles.txtBorder
+                    }
                     required
+                    id="message"
                   ></textarea>
                 </div>
               </div>

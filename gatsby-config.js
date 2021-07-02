@@ -8,7 +8,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `DigitalBiz Tect`,
+        name: `DigitalBiz Tech`,
         short_name: `DBT`,
         description: `The DigitalBiz Tech Site.`,
         display: `standalone`,

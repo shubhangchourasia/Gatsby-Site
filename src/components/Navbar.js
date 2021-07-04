@@ -109,8 +109,8 @@ export default function Navbar() {
               HOME
             </Link>
 
-            <a
-              href="/#about"
+            <Link
+              to="/#about"
              className={
                 "navbar-item " +
                 (darkTheme ? "has-text-white " : "") +
@@ -118,9 +118,9 @@ export default function Navbar() {
               }
             >
               ABOUT
-            </a>
-            <a
-              href="/#services"
+            </Link>
+            <Link
+              to="/#services"
                className={
                 "navbar-item " +
                 (darkTheme ? "has-text-white " : "") +
@@ -128,9 +128,9 @@ export default function Navbar() {
               }
             >
               SERVICES
-            </a>
-            <a
-              href="/#contact"
+            </Link>
+            <Link
+              to="/#contact"
              className={
                 "navbar-item " +
                 (darkTheme ? "has-text-white " : "") +
@@ -138,7 +138,7 @@ export default function Navbar() {
               }
             >
               CONTACT
-            </a>
+            </Link>
             <Link
               to="/blogs"
                className={

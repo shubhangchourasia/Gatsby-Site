@@ -8,39 +8,63 @@ import {
 } from "../styles/homepage.module.css";
 
 export default function Navbar() {
+  // Variables for toggling Navbar
   const hbtoggle1 = React.useRef();
   const hbtoggle2 = React.useRef();
 
+  // Toggle function
   const hamBurgerToggle = () => {
     hbtoggle1.current.classList.toggle("is-active");
     hbtoggle2.current.classList.toggle("is-active");
   };
+  // Styling for logo
   const logoStyle = {
     marginTop: "10px",
     maxHeight: "3rem",
   };
+  // Init localStorage in development
+  // const theme = JSON.parse(localStorage.getItem("darktheme"));
+
+  //  Init localStorage in production
   const theme =
     typeof window !== "undefined"
-      ? JSON.parse(localStorage.getItem("darktheme")) 
+      ? JSON.parse(localStorage.getItem("darktheme"))
       : null;
+
+  // Init darkTheme value in localStorage if not present
   if (!theme) {
-   
-     typeof window !== "undefined"
-       ?  localStorage.setItem("darktheme", false)
-       : null;
+    // Development code
+    // localStorage.setItem("darktheme", false);
+    // Production code
+    typeof window !== "undefined"
+      ? localStorage.setItem("darktheme", false)
+      : null;
   }
-  const [darkTheme,setDarkTheme] = useState();
+  // State for dark theme
+  const [darkTheme, setDarkTheme] = useState();
+
+  // Set theme when page loads
   useEffect(() => {
-    setDarkTheme(theme)
+    setDarkTheme(theme);
   }, [theme]);
 
+  // Function to toggle theme
   const toggleTheme = () => {
     localStorage.setItem("darktheme", !darkTheme);
     window.location.reload();
   };
 
+  // Data for Nav Links
+  const navlinks = [
+    { tag: "HOME", to: "/" },
+    { tag: "ABOUT", to: "/#about" },
+    { tag: "SERVICES", to: "/#services" },
+    { tag: "CONTACT", to: "/#contact" },
+    { tag: "BLOGS", to: "/blogs" },
+  ];
   return (
     <div>
+      {/* Navbar */}
       <nav
         className={
           "navbar is-fixed-top is-transparent " + (darkTheme ? "is-black" : "")
@@ -48,11 +72,13 @@ export default function Navbar() {
         role="navigation"
         aria-label="main navigation"
       >
+        {/* Brand Logo */}
         <div className="navbar-brand">
           <Link className="navbar-item" to="/">
             <img src="/img/Logo.png" alt="Logo" style={logoStyle} />
           </Link>
           <div className={themeImg2}>
+            {/* The toggle icons */}
             <div onClick={toggleTheme} aria-hidden="true">
               {darkTheme ? (
                 <figure className="image is-32x32">
@@ -65,6 +91,7 @@ export default function Navbar() {
               )}
             </div>
           </div>
+          {/* Hamburger Button */}
           <div
             role="button"
             className="navbar-burger"
@@ -80,12 +107,14 @@ export default function Navbar() {
             <span aria-hidden="true"></span>
           </div>
         </div>
+        {/* Links of Navbar */}
         <div
           className={"navbar-menu " + (darkTheme ? "has-background-black" : "")}
           ref={hbtoggle2}
         >
           <div className="navbar-end mr-6 ">
             <div className={themeImg1}>
+              {/* The toggle icons */}
               <div onClick={toggleTheme} aria-hidden="true">
                 {darkTheme ? (
                   <figure className="image is-32x32">
@@ -98,57 +127,20 @@ export default function Navbar() {
                 )}
               </div>
             </div>
-            <Link
-              to="/"
-              className={
-                "navbar-item " +
-                (darkTheme ? "has-text-white " : "") +
-                (darkTheme ? navDarkMode : "")
-              }
-            >
-              HOME
-            </Link>
-
-            <Link
-              to="/#about"
-             className={
-                "navbar-item " +
-                (darkTheme ? "has-text-white " : "") +
-                (darkTheme ? navDarkMode : "")
-              }
-            >
-              ABOUT
-            </Link>
-            <Link
-              to="/#services"
-               className={
-                "navbar-item " +
-                (darkTheme ? "has-text-white " : "") +
-                (darkTheme ? navDarkMode : "")
-              }
-            >
-              SERVICES
-            </Link>
-            <Link
-              to="/#contact"
-             className={
-                "navbar-item " +
-                (darkTheme ? "has-text-white " : "") +
-                (darkTheme ? navDarkMode : "")
-              }
-            >
-              CONTACT
-            </Link>
-            <Link
-              to="/blogs"
-               className={
-                "navbar-item " +
-                (darkTheme ? "has-text-white " : "") +
-                (darkTheme ? navDarkMode : "")
-              }
-            >
-              BLOGS
-            </Link>
+            {/* Links Loop */}
+            {navlinks.map((link) => (
+              <Link
+                to={link.to}
+                key={link.tag}
+                className={
+                  "navbar-item " +
+                  (darkTheme ? "has-text-white " : "") +
+                  (darkTheme ? navDarkMode : "")
+                }
+              >
+                {link.tag}
+              </Link>
+            ))}
           </div>
         </div>
       </nav>

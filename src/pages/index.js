@@ -10,6 +10,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { Helmet } from "react-helmet";
 const ReactMarkdown = require("react-markdown");
+
 export default function Index({ data }) {
   const pageData = data.markdownRemark.frontmatter;
   const mar = {
@@ -17,15 +18,23 @@ export default function Index({ data }) {
     marginBottom: "100px",
   };
 
+  // Init localStorage in development
+  // const theme = JSON.parse(localStorage.getItem("darktheme"));
+
+  //  Init localStorage in production
   const theme =
     typeof window !== "undefined"
       ? JSON.parse(localStorage.getItem("darktheme"))
       : null;
+
+  // State for dark theme
   const [darkTheme, setDarkTheme] = useState();
+  // Set theme when page loads
   useEffect(() => {
     setDarkTheme(theme);
   }, [theme]);
 
+  // Init Aos
   useEffect(() => {
     AOS.init({
       duration: 1500,
@@ -35,24 +44,29 @@ export default function Index({ data }) {
 
   return (
     <Layout>
+      {/* Meta tags */}
       <Helmet>
         <title>DigitalBiz Tech</title>
-         <meta name="description" content="DBT Application" />
+        <meta name="description" content="DBT Application" />
       </Helmet>
+      {/* Home Section */}
       <section id="#">
         <div className="columns">
           <div
             className="column mt-6 pt-6 is-two-fifth ml-6 "
             data-aos="fade-up"
           >
+            {/* Heading */}
             <ReactMarkdown
               children={pageData.heading}
               className={"has-text-weight-semibold mt-6 " + styles.heading}
             />
+            {/* Slogan */}
             <ReactMarkdown
               children={pageData.slogan}
               className={"has-text-weight-semibold mt-6 " + styles.slogan}
             />
+            {/* Contact us link */}
             <Link to="/#contact">
               <div className="buttons mt-2">
                 <button className="button is-info">Contact Us</button>
@@ -63,6 +77,7 @@ export default function Index({ data }) {
             className="column is-flex is-justify-content-center"
             data-aos="zoom-in"
           >
+            {/* Home image */}
             <figure className={"image " + styles.topImage}>
               <GatsbyImage
                 image={getImage(
@@ -78,6 +93,7 @@ export default function Index({ data }) {
             className="column is-flex is-justify-content-center"
             data-aos="zoom-in"
           >
+            {/* Salesforce image */}
             <figure className={"image " + styles.salesfImg}>
               <GatsbyImage
                 image={getImage(
@@ -88,6 +104,7 @@ export default function Index({ data }) {
               />
             </figure>
           </div>
+          {/* Subheading */}
           <div className="column" data-aos="fade-up">
             <ReactMarkdown
               children={pageData.subheading}
@@ -100,6 +117,8 @@ export default function Index({ data }) {
           </div>
         </div>
       </section>
+
+      {/* About Section */}
       <section id="about" style={mar}>
         <div
           className={
@@ -115,6 +134,7 @@ export default function Index({ data }) {
             <div className="has-text-weight-semibold has-text-centered is-size-4 is-size-5-mobile has-text-info mb-4">
               Our Mission
             </div>
+            {/* Mission Text */}
             <ReactMarkdown
               children={pageData.mission}
               className={
@@ -128,6 +148,7 @@ export default function Index({ data }) {
             className="column is-flex is-justify-content-center "
             data-aos="zoom-in"
           >
+            {/* About image */}
             <figure className={"image "}>
               <GatsbyImage
                 image={getImage(
@@ -139,6 +160,7 @@ export default function Index({ data }) {
           </div>
         </div>
         <div data-aos="fade-up">
+          {/* Core Values  */}
           <ReactMarkdown
             children={pageData.coreValues}
             className={
@@ -149,6 +171,7 @@ export default function Index({ data }) {
           />
         </div>
       </section>
+      {/* Services Section */}
       <section id="services" style={mar}>
         <div
           className={
@@ -161,6 +184,7 @@ export default function Index({ data }) {
         </div>
         <div className="columns is-vcentered mt-4">
           <div className="column is-two-fifths" data-aos="zoom-in">
+            {/* Services image */}
             <figure className={"image "}>
               <GatsbyImage
                 image={getImage(
@@ -170,6 +194,7 @@ export default function Index({ data }) {
               />
             </figure>
           </div>
+          {/* All services with image and data */}
           <div className="column mt-3">
             <div className={"columns " + styles.cols}>
               <div
@@ -286,6 +311,7 @@ export default function Index({ data }) {
           </div>
         </div>
       </section>
+      {/* Contact Section */}
       <section id="contact" style={mar}>
         <div
           className={
@@ -296,6 +322,7 @@ export default function Index({ data }) {
         >
           Contact Us
         </div>
+        {/* Form for contact */}
         <div className="columns mt-4">
           <div className="column ml-6 mr-6 is-two-fifths" data-aos="fade-up">
             <form>
@@ -387,7 +414,7 @@ export default function Index({ data }) {
               </div>
             </form>
           </div>
-
+          {/* Contact Image */}
           <div className="column" data-aos="zoom-in">
             <div className="is-flex is-justify-content-center">
               <figure className={"image"}>

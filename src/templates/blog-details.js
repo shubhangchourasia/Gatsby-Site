@@ -7,6 +7,7 @@ import { mainBlog, mainBlogImg } from "../styles/homepage.module.css";
 import { FaArrowLeft } from "react-icons/fa";
 import { Helmet } from "react-helmet";
 import { darkModeText } from "../styles/homepage.module.css";
+
 const BlogDetails = ({ data }) => {
   const blog = data.markdownRemark;
   const icon = {
@@ -14,21 +15,30 @@ const BlogDetails = ({ data }) => {
     marginTop: "2px",
     marginRight: "5px",
   };
- const theme =
-   typeof window !== "undefined"
-     ? JSON.parse(localStorage.getItem("darktheme"))
-     : null;
+  // Init localStorage in development
+  // const theme = JSON.parse(localStorage.getItem("darktheme"));
+
+  //  Init localStorage in production
+  const theme =
+    typeof window !== "undefined"
+      ? JSON.parse(localStorage.getItem("darktheme"))
+      : null;
+
+  // State for dark theme
   const [darkTheme, setDarkTheme] = useState();
+  // Set theme when page loads
   useEffect(() => {
     setDarkTheme(theme);
   }, [theme]);
 
   return (
     <Layout>
+      {/* Meta tags */}
       <Helmet>
         <title> {blog.frontmatter.title}</title>
         <meta name="description" content="Blog Details" />
       </Helmet>
+      {/* Back to blogs link */}
       <Link to="/blogs">
         <div
           className={
@@ -43,6 +53,7 @@ const BlogDetails = ({ data }) => {
       </Link>
 
       <div className={"is-flex is-justify-content-center " + mainBlogImg}>
+        .{/* Blog image */}
         {blog.frontmatter.thumbnail != null ? (
           <GatsbyImage
             image={getImage(blog.frontmatter.thumbnail.childImageSharp)}
@@ -60,12 +71,13 @@ const BlogDetails = ({ data }) => {
           }
         >
           {" "}
+          {/* Blog title */}
           {blog.frontmatter.title}{" "}
         </div>
         <div className="has-text-right mt-2 has-text-grey">
           {blog.frontmatter.date} • {blog.frontmatter.readTime} min read
         </div>
-
+        {/* Blog content */}
         <div
           dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }}
           className={

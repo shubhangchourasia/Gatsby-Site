@@ -16,20 +16,30 @@ import {
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { Helmet } from "react-helmet";
 import { FaSearch } from "react-icons/fa";
+
 export default function Blogs({ data }) {
   const blogs = data.blogs.edges;
   const bloginfo = data.bloginfo;
-    const theme =
-      typeof window !== "undefined"
-        ? JSON.parse(localStorage.getItem("darktheme"))
-        : null;
-     const [darkTheme, setDarkTheme] = useState();
-     useEffect(() => {
-       setDarkTheme(theme);
-     }, [theme]);
+  // Init localStorage in development
+  // const theme = JSON.parse(localStorage.getItem("darktheme"));
 
+  //  Init localStorage in production
+  const theme =
+    typeof window !== "undefined"
+      ? JSON.parse(localStorage.getItem("darktheme"))
+      : null;
 
+  // State for dark theme
+  const [darkTheme, setDarkTheme] = useState();
+  // Set theme when page loads
+  useEffect(() => {
+    setDarkTheme(theme);
+  }, [theme]);
+
+  // Varialble for search
   const [searchTerm, setsearchTerm] = useState("");
+
+  // Init AOS
   useEffect(() => {
     AOS.init({
       duration: 1500,
@@ -39,6 +49,7 @@ export default function Blogs({ data }) {
 
   return (
     <Layout>
+      {/* Meta Tags */}
       <Helmet>
         <title>Blogs</title>
         <meta name="description" content="DBT Blogs" />
@@ -49,9 +60,11 @@ export default function Blogs({ data }) {
             <div className="columns is-vcentered">
               <div className="column" data-aos="fade-up">
                 <div className="title is-size-2 is-size-3-mobile has-text-info ">
+                  {/* Bolg page title */}
                   {bloginfo.frontmatter.title}
                 </div>
                 <div>
+                  {/* Blog page subtitle */}
                   <div
                     dangerouslySetInnerHTML={{
                       __html: bloginfo.html,
@@ -69,6 +82,7 @@ export default function Blogs({ data }) {
                 className="column is-flex is-justify-content-center"
                 data-aos="zoom-in"
               >
+                {/* Blog page image */}
                 <GatsbyImage
                   image={getImage(bloginfo.frontmatter.blogImg.childImageSharp)}
                   alt="Blog Image"
@@ -83,6 +97,7 @@ export default function Blogs({ data }) {
       <div className={main} data-aos="fade-up" data-aos-duration="1500">
         <div className="field ">
           <div className="control has-icons-right">
+            {/* Search Bar */}
             <input
               className={
                 (darkTheme
@@ -103,6 +118,7 @@ export default function Blogs({ data }) {
             </span>
           </div>
         </div>
+        {/* Display all blogs */}
         <div className={blogContainer}>
           {blogs
             .filter((val) => {

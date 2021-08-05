@@ -9,6 +9,7 @@ import { MdEmail } from "react-icons/md";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { Helmet } from "react-helmet";
+import axios from "axios";
 const ReactMarkdown = require("react-markdown");
 
 export default function Index({ data }) {
@@ -43,7 +44,7 @@ export default function Index({ data }) {
   }, []);
 
   // Handle submit button
-  const handleSubmit = async (e) => {
+  const handleSubmi = async (e) => {
     e.preventDefault();
     console.log("Submit Clicked");
     console.log("Details", formDetails);
@@ -56,13 +57,28 @@ export default function Index({ data }) {
     });
     console.log("response", response);
     const resData = await response.json();
-    console.log('resData',resData)
+    console.log("resData", resData);
     if (resData.status === "success") {
       alert("Message Sent.");
       // this.resetForm();
     } else if (resData.status === "fail") {
       alert("Message failed to send.");
     }
+  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log('Submitted')
+    axios({
+      method: "POST",
+      url: "/api/send",
+      data: formDetails,
+    }).then((response) => {
+      if (response.data.status === "success") {
+        alert("Message Sent.");
+      } else if (response.data.status === "fail") {
+        alert("Message failed to send.");
+      }
+    });
   };
 
   // Form Data
@@ -466,12 +482,6 @@ export default function Index({ data }) {
                 />
               </div>
             </form>
-            <input
-              type="submit"
-              className="button is-info is-outlined is-fullwidth"
-              value="Submit"
-              onClick={handleSubmit}
-            />
           </div>
           {/* Contact Image */}
           <div className="column" data-aos="zoom-in">

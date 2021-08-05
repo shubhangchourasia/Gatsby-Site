@@ -16,6 +16,7 @@ const mailer = nodemailer.createTransport({
 });
 
 app.post("/", function (req, res) {
+  console.log('req',req)
   mailer.sendMail(
     {
       from: 'shubhangc99@gmail.com',//req.body.from,

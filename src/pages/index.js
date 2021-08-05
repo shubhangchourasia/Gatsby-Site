@@ -327,11 +327,11 @@ export default function Index({ data }) {
         {/* Form for contact */}
         {/* Change */}
         {console.log("Hi", process.env.GATSBY_GMAILUSER)}
-        Here - {process.env.GATSBY_GMAILUSER}
+        {process.env.NODE_ENV} Here - {process.env.GATSBY_GMAILUSER}
         {/* Change */}
         <div className="columns mt-4">
           <div className="column ml-6 mr-6 is-two-fifths" data-aos="fade-up">
-            <form method="post" action="/">
+            <form method="post" action="https://digitalbiztech.netlify.app">
               <div className="field ">
                 <label
                   className={

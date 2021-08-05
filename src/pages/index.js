@@ -40,7 +40,9 @@ export default function Index({ data }) {
       duration: 1500,
       once: true,
     });
+ 
   }, []);
+
 
   return (
     <Layout>
@@ -323,9 +325,13 @@ export default function Index({ data }) {
           Contact Us
         </div>
         {/* Form for contact */}
+        {/* Change */}
+        {console.log("Hi", process.env.GATSBY_GMAILUSER)}
+        Here - {process.env.GATSBY_GMAILUSER}
+        {/* Change */}
         <div className="columns mt-4">
           <div className="column ml-6 mr-6 is-two-fifths" data-aos="fade-up">
-            <form>
+            <form method="post" action="/">
               <div className="field ">
                 <label
                   className={
@@ -408,7 +414,10 @@ export default function Index({ data }) {
                 </div>
               </div>
               <div className="buttons is-centered">
-                <button className="button is-info is-outlined is-fullwidth">
+                <button
+                  type="submit"
+                  className="button is-info is-outlined is-fullwidth"
+                >
                   Submit
                 </button>
               </div>

@@ -16,20 +16,22 @@ const mailer = nodemailer.createTransport({
 });
 
 app.post("/", function (req, res) {
-  console.log('req',req)
+  console.log("req", req);
   mailer.sendMail(
     {
-      from: 'shubhangc99@gmail.com',//req.body.from,
-      to: 'shubhang24c@gmail.com', // [contactAddress],
-      subject: 'Hello',//req.body.subject || "[No subject]",
+      from: "shubhangc99@gmail.com", //req.body.from,
+      to: "shubhang24c@gmail.com", // [contactAddress],
+      subject: "Hello", //req.body.subject || "[No subject]",
+      text: "This is demo.",
     },
-      function (err, info) {
-          console.log('err', err)
-          console.log('info',info)
+    function (err, info) {
+      console.log("err", err);
+      console.log("info", info);
       if (err) return res.status(500).send(err);
       res.json({ success: true });
     }
   );
 });
 
-app.listen(3000);
+const PORT = process.env.PORT || 9000;
+app.listen(PORT, () => console.info(`server has started on ${PORT}`));

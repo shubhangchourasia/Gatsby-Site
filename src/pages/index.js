@@ -40,10 +40,37 @@ export default function Index({ data }) {
       duration: 1500,
       once: true,
     });
- 
   }, []);
 
+  // Handle submit button
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log("Submit Clicked");
+    console.log("Details", formDetails);
+    const response = await fetch("/", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({ formDetails }),
+    });
+    console.log("response", response);
+    const resData = await response.json();
+    console.log('resData',resData)
+    if (resData.status === "success") {
+      alert("Message Sent.");
+      // this.resetForm();
+    } else if (resData.status === "fail") {
+      alert("Message failed to send.");
+    }
+  };
 
+  // Form Data
+  const [formDetails, setFormDetails] = useState({
+    name: null,
+    email: null,
+    message: null,
+  });
   return (
     <Layout>
       {/* Meta tags */}
@@ -331,7 +358,7 @@ export default function Index({ data }) {
         {/* Change */}
         <div className="columns mt-4">
           <div className="column ml-6 mr-6 is-two-fifths" data-aos="fade-up">
-            <form method="post" action="https://digitalbiztech.netlify.app">
+            <form onSubmit={handleSubmit}>
               <div className="field ">
                 <label
                   className={
@@ -354,6 +381,12 @@ export default function Index({ data }) {
                     type="text"
                     required
                     id="name"
+                    onChange={(event) =>
+                      setFormDetails({
+                        ...formDetails,
+                        name: event.target.value,
+                      })
+                    }
                   />
                   <span className="icon is-left">
                     <FaUserAlt />
@@ -383,6 +416,12 @@ export default function Index({ data }) {
                     type="email"
                     required
                     id="email"
+                    onChange={(event) =>
+                      setFormDetails({
+                        ...formDetails,
+                        email: event.target.value,
+                      })
+                    }
                   />
                   <span className="icon is-left">
                     <MdEmail />
@@ -410,18 +449,29 @@ export default function Index({ data }) {
                     }
                     required
                     id="message"
+                    onChange={(event) =>
+                      setFormDetails({
+                        ...formDetails,
+                        message: event.target.value,
+                      })
+                    }
                   ></textarea>
                 </div>
               </div>
               <div className="buttons is-centered">
-                <button
+                <input
                   type="submit"
                   className="button is-info is-outlined is-fullwidth"
-                >
-                  Submit
-                </button>
+                  value="Submit"
+                />
               </div>
             </form>
+            <input
+              type="submit"
+              className="button is-info is-outlined is-fullwidth"
+              value="Submit"
+              onClick={handleSubmit}
+            />
           </div>
           {/* Contact Image */}
           <div className="column" data-aos="zoom-in">

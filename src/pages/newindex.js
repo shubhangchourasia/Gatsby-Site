@@ -9,6 +9,7 @@ import { MdEmail } from "react-icons/md";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { Helmet } from "react-helmet";
+import Recaptcha from "react-recaptcha";
 const ReactMarkdown = require("react-markdown");
 
 export default function Index({ data }) {
@@ -29,9 +30,22 @@ export default function Index({ data }) {
 
   // State for dark theme
   const [darkTheme, setDarkTheme] = useState();
+  //ReCaptcha toggle function
+  const reCaptchaToggle = () => {
+    const ogURL = new URL(document.getElementsByTagName("iframe")[0].src); //Extract original url from iframe
+    const params = new URLSearchParams(ogURL.search); //Get search parameters
+    params.set("theme", "dark"); //Set theme
+    const url =
+      "https://www.google.com/recaptcha/api2/anchor?" + params.toString(); //Create new URL
+    document.getElementsByTagName("iframe")[0].src = url; //Set new URL to iframe source.
+  };
   // Set theme when page loads
   useEffect(() => {
     setDarkTheme(theme);
+    document.getElementById("g-recaptcha").children[0].style.margin = "auto";
+    if (theme) {
+      reCaptchaToggle();
+    }
   }, [theme]);
 
   // Init Aos
@@ -42,17 +56,76 @@ export default function Index({ data }) {
     });
   }, []);
 
-  // Handle submit button
-  const handleSubmit = (e) => {
+  // Variable to store contact form details
+  const [formDetails, setFormDetails] = useState({
+    Name: null,
+    Email: null,
+    Message: null,
+  });
+  // Recaptcha code
+  const verifyCallback = (res) => {
+    if (res) {
+      setIsVerified(true);
+    }
+  };
+
+  // Verified variable
+  const [isVerified, setIsVerified] = useState(false);
+
+  const submitButton = React.useRef(); // To toggle loading in submit button.
+
+  //Send function to submit contact form details.
+  const sendForm = (e) => {
     e.preventDefault();
-    console.log("Submit Clicked");
+    if (isVerified) {
+      submitButton.current.classList.toggle("is-loading");
+      var xhr = new XMLHttpRequest();
+      //Url of google sheets script.
+      xhr.open(
+        "POST",
+        "https://script.google.com/macros/s/AKfycbwcH2mGRIAQdwO2X51kUXr-rxnYul-ZOmpbxa_kjVKE-Dg3AF2atwKzfTyvGAbXrm4I/exec"
+      );
+      // xhr.open(
+      //   "POST",
+      //   "https://script.google.com/macros/s/AKfycbz1HuGxDCfo3UlZ_c_2-Z8e8boRuYE-kkHsAzkgXFuwOnnAapPxSol1FsQpGlA-O6k/exec"
+      // );
+      xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          alert("Your message has been submitted successfully.");
+          setIsVerified(false);
+          e.target.reset();
+          window.grecaptcha.reset();
+          //Center the reCaptcha
+          document.getElementById("g-recaptcha").children[0].style.margin =
+            "auto";
+          if (theme) {
+            reCaptchaToggle();
+          }
+          submitButton.current.classList.toggle("is-loading");
+        }
+      };
+      xhr.onerror = (err) => {
+        console.log("err", err);
+      };
+      var encoded = Object.keys(formDetails)
+        .map(function (k) {
+          return (
+            encodeURIComponent(k) + "=" + encodeURIComponent(formDetails[k])
+          );
+        })
+        .join("&");
+      xhr.send(encoded);
+    } else {
+      alert("Please verify reCaptcha.");
+    }
   };
 
   return (
     <Layout>
       {/* Meta tags */}
       <Helmet>
-        <title>DigitalBiz Tech</title>
+        <title>Digital Biz Tech</title>
         <meta name="description" content="DBT Application" />
       </Helmet>
       {/* Home Section */}
@@ -331,26 +404,23 @@ export default function Index({ data }) {
         {/* Form for contact */}
         <div className="columns mt-4">
           <div className="column ml-6 mr-6 is-two-fifths" data-aos="fade-up">
-            {/* <form onSubmit={handleSubmit}> */}
-            <form
-              id="gform"
-              className="pure-form pure-form-stacked"
-              method="POST"
-              data-email="from_email@example.com"
-              action="https://script.google.com/macros/s/AKfycbyz7bM3UGlKwHEP-nyQCG6JdHbNd_v6tUrzAkigDwQrDG-1H4Iw3hke-ryKYmDilvyw/exec"
-            >
-              <div className="field ">
+            {/* Form goes here */}
+            <form onSubmit={sendForm}>
+              <div className="field">
                 <label
+                  htmlFor="Name"
                   className={
                     "label has-text-weight-light " +
                     (darkTheme ? "has-text-light" : "has-text-grey")
                   }
-                  htmlFor="Name"
                 >
-                  Name
+                  Name:
                 </label>
                 <div className="control has-icons-left">
                   <input
+                    id="Name"
+                    name="Name"
+                    required
                     className={
                       (darkTheme
                         ? "has-background-black has-text-light"
@@ -358,35 +428,35 @@ export default function Index({ data }) {
                       " input " +
                       styles.txtBorder
                     }
-                    type="text"
-                    required
-                    id="Name"
-                  />
-                  {/* onChange=
-                  {(event) =>
-                    setFormDetails({
-                      ...formDetails,
-                      name: event.target.value,
-                    })
-                  } */}
+                    onChange={(event) =>
+                      setFormDetails({
+                        ...formDetails,
+                        Name: event.target.value,
+                      })
+                    }
+                  />{" "}
                   <span className="icon is-left">
                     <FaUserAlt />
                   </span>
                 </div>
               </div>
+
               <div className="field">
                 <label
+                  htmlFor="Email"
                   className={
                     "label has-text-weight-light " +
                     (darkTheme ? "has-text-light" : "has-text-grey")
                   }
-                  htmlFor="Email"
                 >
-                  Email
+                  Email:
                 </label>
-
                 <div className="control has-icons-left">
                   <input
+                    id="Email"
+                    name="Email"
+                    type="email"
+                    required
                     className={
                       (darkTheme
                         ? "has-background-black has-text-light"
@@ -394,9 +464,12 @@ export default function Index({ data }) {
                       " input " +
                       styles.txtBorder
                     }
-                    type="email"
-                    required
-                    id="Email"
+                    onChange={(event) =>
+                      setFormDetails({
+                        ...formDetails,
+                        Email: event.target.value,
+                      })
+                    }
                   />
                   <span className="icon is-left">
                     <MdEmail />
@@ -405,16 +478,19 @@ export default function Index({ data }) {
               </div>
               <div className="field">
                 <label
+                  htmlFor="Message"
                   className={
                     "label has-text-weight-light " +
                     (darkTheme ? "has-text-light" : "has-text-grey")
                   }
-                  htmlFor="Message"
                 >
-                  Message
+                  Message:{" "}
                 </label>
                 <div className="control">
                   <textarea
+                    id="Message"
+                    name="Message"
+                    required
                     className={
                       (darkTheme
                         ? "has-text-light has-background-black"
@@ -422,22 +498,29 @@ export default function Index({ data }) {
                       " textarea " +
                       styles.txtBorder
                     }
-                    required
-                    id="Message"
+                    onChange={(event) =>
+                      setFormDetails({
+                        ...formDetails,
+                        Message: event.target.value,
+                      })
+                    }
                   ></textarea>
                 </div>
               </div>
-              <div className="buttons is-centered">
-                <input
-                  type="submit"
-                  className="button is-info is-outlined is-fullwidth"
-                  value="Submit"
+              <div className="field">
+                <Recaptcha
+                  sitekey="6Ld6fukbAAAAAJumHsGXH7_lcqVVUTvwfjNpLaRa"
+                  render="explicit"
+                  verifyCallback={verifyCallback}
                 />
+              </div>
+              <div className="buttons is-centered">
                 <button
-                  onClick={handleSubmit}
-                  className="button is-success is-outlined is-fullwidth"
+                  className="button is-info is-outlined is-fullwidth pure-button"
+                  type="submit"
+                  ref={submitButton}
                 >
-                  This
+                  Submit
                 </button>
               </div>
             </form>
@@ -462,7 +545,7 @@ export default function Index({ data }) {
 }
 
 export const query = graphql`
-  query Homepage {
+  query homepage {
     markdownRemark(fields: { slug: { eq: "/homepage/" } }) {
       frontmatter {
         salesforceImage {

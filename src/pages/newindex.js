@@ -32,19 +32,27 @@ export default function Index({ data }) {
   const [darkTheme, setDarkTheme] = useState();
   //ReCaptcha toggle function
   const reCaptchaToggle = () => {
-    const ogURL = new URL(document.getElementsByTagName("iframe")[0].src); //Extract original url from iframe
-    const params = new URLSearchParams(ogURL.search); //Get search parameters
-    params.set("theme", "dark"); //Set theme
-    const url =
-      "https://www.google.com/recaptcha/api2/anchor?" + params.toString(); //Create new URL
-    document.getElementsByTagName("iframe")[0].src = url; //Set new URL to iframe source.
+    if (document.getElementsByTagName("iframe")[0]) {
+      const ogURL = new URL(document.getElementsByTagName("iframe")[0].src); //Extract original url from iframe
+      const params = new URLSearchParams(ogURL.search); //Get search parameters
+      params.set("theme", "dark"); //Set theme
+      const url =
+        "https://www.google.com/recaptcha/api2/anchor?" + params.toString(); //Create new URL
+      document.getElementsByTagName("iframe")[0].src = url; //Set new URL to iframe source.
+    }
   };
   // Set theme when page loads
   useEffect(() => {
     setDarkTheme(theme);
-    const captchaEle = document.getElementById("g-recaptcha");
+    const captchaEle = document.getElementById("g-recaptcha").children[0];
+    console.log('qwew',captchaEle)
     if (captchaEle) {
-      captchaEle.children[0].style.margin = "auto";
+    console.log("qwew2", captchaEle);
+
+      captchaEle.style.margin = "auto";
+    }
+    else {
+      window.location.reload()
     }
     if (theme) {
       reCaptchaToggle();
@@ -100,8 +108,13 @@ export default function Index({ data }) {
           e.target.reset();
           window.grecaptcha.reset();
           //Center the reCaptcha
-          document.getElementById("g-recaptcha").children[0].style.margin =
-            "auto";
+          let captchaAlign = document.getElementById("g-recaptcha");
+          console.log("cap", captchaAlign);
+          if (captchaAlign) {
+            console.log('cap2', captchaAlign)
+            document.getElementById("g-recaptcha").children[0].style.margin =
+              "auto";
+          }
           if (theme) {
             reCaptchaToggle();
           }

@@ -42,7 +42,10 @@ export default function Index({ data }) {
   // Set theme when page loads
   useEffect(() => {
     setDarkTheme(theme);
-    document.getElementById("g-recaptcha").children[0].style.margin = "auto";
+    const captchaEle = document.getElementById("g-recaptcha");
+    if (captchaEle) {
+      captchaEle.children[0].style.margin = "auto";
+    }
     if (theme) {
       reCaptchaToggle();
     }

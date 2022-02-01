@@ -7,7 +7,8 @@ import { mainBlog, mainBlogImg } from "../styles/homepage.module.css";
 import { FaArrowLeft } from "react-icons/fa";
 import { Helmet } from "react-helmet";
 import { darkModeText } from "../styles/homepage.module.css";
-
+import { defineCustomElements as deckDeckGoElement } from "@deckdeckgo/highlight-code/dist/loader";
+deckDeckGoElement();
 const BlogDetails = ({ data }) => {
   const blog = data.markdownRemark;
   const icon = {

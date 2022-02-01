@@ -332,13 +332,7 @@ export default function Index({ data }) {
         <div className="columns mt-4">
           <div className="column ml-6 mr-6 is-two-fifths" data-aos="fade-up">
             {/* <form onSubmit={handleSubmit}> */}
-            <form
-              id="gform"
-              className="pure-form pure-form-stacked"
-              method="POST"
-              data-email="from_email@example.com"
-              action="https://script.google.com/macros/s/AKfycbyz7bM3UGlKwHEP-nyQCG6JdHbNd_v6tUrzAkigDwQrDG-1H4Iw3hke-ryKYmDilvyw/exec"
-            >
+            <form id="gform" className="pure-form pure-form-stacked">
               <div className="field ">
                 <label
                   className={
@@ -433,12 +427,6 @@ export default function Index({ data }) {
                   className="button is-info is-outlined is-fullwidth"
                   value="Submit"
                 />
-                <button
-                  onClick={handleSubmit}
-                  className="button is-success is-outlined is-fullwidth"
-                >
-                  This
-                </button>
               </div>
             </form>
           </div>
